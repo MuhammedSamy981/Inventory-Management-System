@@ -1,0 +1,33 @@
+using FluentValidation;
+using InventoryManagementSystem.Domain.Interfaces;
+
+namespace InventoryManagementSystem.Application.InventoryItems.Commands
+{
+    public class CreateInventoryItemCommandValidator : AbstractValidator<CreateInventoryItemCommand>
+{
+        private readonly IUnitOfWork _unitOfWork;
+
+        public CreateInventoryItemCommandValidator(IUnitOfWork unitOfWork)
+    { 
+        _unitOfWork = unitOfWork;
+        
+/*            RuleFor(ii=>(ii.InventoryId+"/"+ii.ItemId)as string)
+                 .MustAsync(async (j, cancellationToken) =>
+            {
+                // Returns true if the ID does NOT exist (meaning it is unique)
+                bool exists = await _unitOfWork.InventoryItemRepository.ExistsAsync(inventoryId,itemId, cancellationToken);
+                return !exists; 
+            })
+            .WithMessage("An item with this ID already exists in the database.");
+           RuleFor(ii => ii.InventoryId).NotEmpty().WithMessage("InventoryId is required");*/
+
+            RuleFor(ii=> ii.ItemId).NotEmpty().WithMessage("ItemId is required");
+
+            RuleFor(ii => ii.Quantity)
+                .NotEmpty().WithMessage("Quantity is required")
+                .GreaterThan(0).WithMessage("Quantity must be greater than 0");
+
+
+    }
+}
+}

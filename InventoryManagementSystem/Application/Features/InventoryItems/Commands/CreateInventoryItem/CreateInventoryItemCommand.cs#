@@ -1,0 +1,10 @@
+using MediatR;
+
+namespace InventoryManagementSystem.Application.InventoryItems.Commands
+{
+public record CreateInventoryItemCommand(
+int InventoryId,
+int ItemId,
+int Quantity) : IRequest<bool>;
+}
+

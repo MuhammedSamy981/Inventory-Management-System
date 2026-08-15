@@ -1,0 +1,33 @@
+using AutoMapper;
+using MediatR;
+using InventoryManagementSystem.Domain.Entities;
+using InventoryManagementSystem.Domain.Interfaces;
+
+namespace InventoryManagementSystem.Application.InventoryItems.Commands
+{
+public class CreateInventoryItemCommandHandler : IRequestHandler<CreateInventoryItemCommand, bool>
+{
+        private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
+    
+
+    public CreateInventoryItemCommandHandler(IUnitOfWork unitOfWork,IMapper mapper)
+        {
+            
+        _unitOfWork = unitOfWork;
+           _mapper = mapper;
+           }
+    public async Task<bool> Handle(CreateInventoryItemCommand request, CancellationToken cancellationToken)
+    {
+       var inventoryItemExists =  await _unitOfWork.InventoryItemRepository.ExistsAsync(request.InventoryId, request.ItemId);
+        if(inventoryItemExists)
+        {
+            return false;
+        } 
+               var inventoryItem = _mapper.Map<InventoryItem>(request);                
+       await _unitOfWork.InventoryItemRepository.AddAsync(inventoryItem);
+        return await  _unitOfWork.SaveChangesAsync() != 0;
+    }
+}
+
+}

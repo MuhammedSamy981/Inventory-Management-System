@@ -1,0 +1,35 @@
+using AutoMapper;
+using MediatR;
+using InventoryManagementSystem.Application.Dtos;
+using InventoryManagementSystem.Domain.Interfaces;
+
+namespace InventoryManagementSystem.Application.InventoryItems.Queries
+{
+public class GetAllInventoryItemsbyinventoryIdAndStorageDateQueryHandler : IRequestHandler<GetAllInventoryItemsbyinventoryIdAndStorageDateQuery, List<InventoryItemWithItemDetailsInSpecificPeriodDto>>
+{
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
+    
+
+    public GetAllInventoryItemsbyinventoryIdAndStorageDateQueryHandler(IUnitOfWork unitOfWork,IMapper mapper)
+        {
+            
+        _unitOfWork = unitOfWork;
+           _mapper = mapper;
+           }
+
+    public async Task<List<InventoryItemWithItemDetailsInSpecificPeriodDto>> Handle(GetAllInventoryItemsbyinventoryIdAndStorageDateQuery request, CancellationToken cancellationToken)
+    {
+ var inventoryItems=await _unitOfWork.InventoryItemRepository.GetAllbyinventoryIdAndStorageDateAsync(request.InventoryId,request.StorageDate,cancellationToken);
+        return inventoryItems.Select(ii=> new InventoryItemWithItemDetailsInSpecificPeriodDto
+        {
+            ItemId = (int)ii.GetType().GetProperty("ItemId")!.GetValue(ii)!,
+            ItemName = (string)ii.GetType().GetProperty("ItemName")!.GetValue(ii)!,
+            ItemSize = (string)ii.GetType().GetProperty("ItemSize")!.GetValue(ii)!,
+            InventoryId = (int)ii.GetType().GetProperty("InventoryId")!.GetValue(ii)!,
+            Quantity = (int?)ii.GetType().GetProperty("Quantity")!.GetValue(ii)!,
+            StorageDate = (DateTime?)ii.GetType().GetProperty("StorageDate")!.GetValue(ii)!
+        }).ToList();
+    }
+}
+}

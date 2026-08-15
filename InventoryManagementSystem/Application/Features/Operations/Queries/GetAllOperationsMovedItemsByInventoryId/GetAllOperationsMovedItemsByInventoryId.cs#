@@ -1,0 +1,10 @@
+using MediatR;
+using InventoryManagementSystem.Application.Dtos;
+
+namespace InventoryManagementSystem.Application.Operations.Queries
+{
+public record GetAllOperationsMovedItemsByInventoryIdQuery(
+    int InventoryId,
+     DateTime? FromDate,
+      DateTime? ToDate) : IRequest<List<OperationWithMovedItemDetailsDto>>;
+}

@@ -1,0 +1,6 @@
+using MediatR;
+
+namespace InventoryManagementSystem.Application.InventoryItems.Commands
+{
+public record DeleteInventoryItemCommand(int Id) : IRequest<bool>;
+}

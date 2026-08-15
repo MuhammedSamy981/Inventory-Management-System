@@ -1,0 +1,35 @@
+using AutoMapper;
+using MediatR;
+using InventoryManagementSystem.Application.Dtos;
+using InventoryManagementSystem.Domain.Interfaces;
+
+namespace InventoryManagementSystem.Application.InventoryItems.Queries
+{
+public class GetAllInventoryItemsbyinventoryIdAndExpiryDateQueryHandler : IRequestHandler<GetAllInventoryItemsbyinventoryIdAndExpiryDateQuery, List<InventoryItemWithExpiredItemDetailsDto>>
+{
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
+    
+
+    public GetAllInventoryItemsbyinventoryIdAndExpiryDateQueryHandler(IUnitOfWork unitOfWork,IMapper mapper)
+        {
+            
+        _unitOfWork = unitOfWork;
+           _mapper = mapper;
+           }
+
+    public async Task<List<InventoryItemWithExpiredItemDetailsDto>> Handle(GetAllInventoryItemsbyinventoryIdAndExpiryDateQuery request, CancellationToken cancellationToken)
+    {
+ var inventoryItems=await _unitOfWork.InventoryItemRepository.GetAllbyInventoryIdAndExpiryDateAsync(request.InventoryId,request.ExpiryDate,cancellationToken);
+        return inventoryItems.Select(ii=> new InventoryItemWithExpiredItemDetailsDto
+        {
+            ItemId = (int)ii.GetType().GetProperty("ItemId")!.GetValue(ii)!,
+            ItemName = (string)ii.GetType().GetProperty("ItemName")!.GetValue(ii)!,
+            ItemSize = (string)ii.GetType().GetProperty("ItemSize")!.GetValue(ii)!,
+            InventoryId = (int)ii.GetType().GetProperty("InventoryId")!.GetValue(ii)!,
+            Quantity = (int?)ii.GetType().GetProperty("Quantity")!.GetValue(ii)!,
+            ExpiryDate = (DateTime?)ii.GetType().GetProperty("ExpiryDate")!.GetValue(ii)!
+        }).ToList();
+    }
+}
+}

@@ -1,0 +1,28 @@
+using AutoMapper;
+using MediatR;
+using InventoryManagementSystem.Application.Dtos;
+using InventoryManagementSystem.Domain.Interfaces;
+
+namespace InventoryManagementSystem.Application.InventoryItems.Queries
+{
+public class GetAllInventoryItemsQueryHandler : IRequestHandler<GetAllInventoryItemsQuery, List<InventoryItemDto>>
+{
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
+    
+
+    public GetAllInventoryItemsQueryHandler(IUnitOfWork unitOfWork,IMapper mapper)
+        {
+            
+        _unitOfWork = unitOfWork;
+           _mapper = mapper;
+           }
+
+    public async Task<List<InventoryItemDto>> Handle(GetAllInventoryItemsQuery request, CancellationToken cancellationToken)
+    {
+        var inventoryItems =await _unitOfWork.InventoryItemRepository.GetAllAsync(cancellationToken);
+
+        return _mapper.Map<List<InventoryItemDto>>(inventoryItems);
+    }
+}
+}

@@ -1,0 +1,31 @@
+using AutoMapper;
+using MediatR;
+using InventoryManagementSystem.Domain.Entities;
+using InventoryManagementSystem.Domain.Interfaces;
+
+namespace InventoryManagementSystem.Application.InventoryItems.Commands
+{
+public class DeleteInventoryItemCommandHandler : IRequestHandler<DeleteInventoryItemCommand, bool>
+{
+        private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
+    
+
+    public DeleteInventoryItemCommandHandler(IUnitOfWork unitOfWork,IMapper mapper)//,  IValidator<InventoryItem> InventoryItemValidator )
+        {            
+        _unitOfWork = unitOfWork;
+           _mapper = mapper;
+           }
+    public async Task<bool> Handle(DeleteInventoryItemCommand request, CancellationToken cancellationToken)
+    {
+        var inventoryItem=await _unitOfWork.InventoryItemRepository.GetByIdAsync(request.Id);
+        if(inventoryItem==null)
+        {
+            return false;
+        }
+       await _unitOfWork.InventoryItemRepository.DeleteAsync(inventoryItem);
+        return await  _unitOfWork.SaveChangesAsync() != 0;
+    }
+}
+
+}

@@ -1,0 +1,27 @@
+using FluentValidation;
+using InventoryManagementSystem.Application.Operations.Queries;
+
+namespace InventoryManagementSystem.Application.Operations.Commands
+{
+    public class GetAllOperationsMovedItemsByInventoryIdValidator : AbstractValidator<GetAllOperationsMovedItemsByInventoryIdQuery>
+    {
+        public GetAllOperationsMovedItemsByInventoryIdValidator()
+        {
+            RuleFor(o => o.InventoryId).NotEmpty().WithMessage("InventoryId is required");
+
+            RuleFor(o => o.FromDate)
+                .LessThanOrEqualTo(o => o.ToDate)
+                .WithMessage("FromDate must be before or equal to ToDate.");
+
+            RuleFor(o => o.ToDate)
+                .LessThanOrEqualTo(DateTime.UtcNow)
+                .WithMessage("ToDate cannot be in the future.");
+
+            /*RuleFor(o => o)
+                .Must(o => (o.ToDate - o.FromDate).TotalDays <= 365)
+                .WithMessage("Date range cannot exceed 1 year.");*/
+
+        }
+    }
+}
+

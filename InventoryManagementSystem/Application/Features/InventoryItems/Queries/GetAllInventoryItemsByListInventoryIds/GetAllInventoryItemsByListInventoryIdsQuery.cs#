@@ -1,0 +1,7 @@
+using MediatR;
+using InventoryManagementSystem.Application.Dtos;
+
+namespace InventoryManagementSystem.Application.InventoryItems.Queries
+{
+public record GetAllInventoryItemsByListInventoryIdsQuery(List<int> InventoryIds) : IRequest<List<InventoryItemWithItemDetailsAndInventoryNameDto>>;
+}

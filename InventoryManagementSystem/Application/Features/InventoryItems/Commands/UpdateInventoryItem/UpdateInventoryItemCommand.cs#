@@ -1,0 +1,9 @@
+using MediatR;
+
+namespace InventoryManagementSystem.Application.InventoryItems.Commands
+{
+public record UpdateInventoryItemCommand(
+int InventoryId,
+int ItemId,
+int Quantity) : IRequest<bool>;
+}

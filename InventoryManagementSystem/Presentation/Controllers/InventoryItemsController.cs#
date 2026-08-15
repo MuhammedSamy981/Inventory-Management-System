@@ -1,0 +1,99 @@
+﻿using InventoryManagementSystem.Application.Dtos;
+using InventoryManagementSystem.Application.InventoryItems.Commands;
+using InventoryManagementSystem.Application.InventoryItems.Queries;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+
+namespace InventoryManagementSystem.Presentation.WebApi.Controllers
+{
+[Route("api/[controller]")]
+[ApiController]
+public class InventoryItemsController : ControllerBase
+{
+    private readonly IMediator _mediator;
+
+    public InventoryItemsController(IMediator mediator) => _mediator = mediator;
+    [HttpGet]
+    public async Task<ActionResult<List<InventoryItemDto>>> GetAll( CancellationToken cancellationToken)
+    { 
+        var query=new GetAllInventoryItemsQuery();
+        var inventoryItems = await _mediator.Send(query, cancellationToken);
+        return Ok(inventoryItems);
+    }
+
+    [HttpGet]
+    [Route("{inventoryId}/{itemId}")]
+    public async Task<ActionResult<InventoryItemWithInventoryDetailsDto>> GetSpecific(int inventoryId, int itemId)
+    {
+        var query = new GetInventoryItemSpecificQuery(inventoryId, itemId);
+        var inventoryItem = await _mediator.Send(query);
+        return inventoryItem != null ? Ok(inventoryItem) : NotFound();
+    }
+
+    [HttpPost]
+    public async Task<ActionResult> Create(CreateInventoryItemCommand command)
+    {
+        var result = await _mediator.Send(command);
+        //return StatusCode( result ? StatusCodes.Status201Created : StatusCodes.Status400BadRequest);
+        return result ? CreatedAtAction(nameof(GetSpecific), new { inventoryId = command.InventoryId, itemId = command.ItemId }, result): BadRequest();
+    }
+
+
+
+    [HttpPut]
+    public async Task<ActionResult> Update(UpdateInventoryItemCommand command)
+    {
+        bool result = await _mediator.Send(command);
+        if (!result)
+        {
+            return NotFound();
+        }
+        return NoContent();
+    }
+
+    [HttpDelete]
+    [Route("{id}")]
+    public async Task< ActionResult> DeleteAsync(int id)
+    {
+        var command = new DeleteInventoryItemCommand(id);
+        bool Item = await _mediator.Send(command);
+        if (!Item){
+            return NotFound();}
+
+          return NoContent();
+    }
+
+         [HttpGet("{inventoryId}")]
+    public async Task<ActionResult<List<InventoryItemWithItemDetailsDto>>> GetAllbyInventoryId(int inventoryId, CancellationToken cancellationToken)
+    {   
+        var query = new GetAllInventoryItemsByInventoryIdQuery(inventoryId);
+        var inventoryItems = await _mediator.Send(query, cancellationToken);
+        return Ok(inventoryItems);
+   }
+
+            [HttpGet("listInventoryIds")]
+    public async Task<ActionResult<List<InventoryItemWithItemDetailsAndInventoryNameDto>>> GetAllbyListInventoryIds(List<int> inventoryIds , CancellationToken cancellationToken)
+    {   
+        var query = new GetAllInventoryItemsByListInventoryIdsQuery(inventoryIds);
+        var inventoryItems = await _mediator.Send(query, cancellationToken);
+        return Ok(inventoryItems);
+   }
+
+                  [HttpGet("storage/{inventoryId}/{storageDate}")]
+    public async Task<ActionResult<List<InventoryItemWithItemDetailsInSpecificPeriodDto>>> GetAllbyinventoryIdAndStorageDate(int inventoryId, DateTime? storageDate, CancellationToken cancellationToken)
+    {   
+        var query = new GetAllInventoryItemsbyinventoryIdAndStorageDateQuery(inventoryId, storageDate);
+        var inventoryItems = await _mediator.Send(query, cancellationToken);
+        return Ok(inventoryItems);
+   }
+
+    [HttpGet("expired/{inventoryId}/{expiryDate}")]
+    public async Task<ActionResult<List<InventoryItemWithExpiredItemDetailsDto>>> GetAllbyInventoryIdAndExpiryDate(int inventoryId,DateTime? expiryDate, CancellationToken cancellationToken)
+    {   
+        var query = new GetAllInventoryItemsbyinventoryIdAndExpiryDateQuery(inventoryId, expiryDate);
+        var inventoryItems = await _mediator.Send(query, cancellationToken);
+        return Ok(inventoryItems);
+   }
+}
+
+}

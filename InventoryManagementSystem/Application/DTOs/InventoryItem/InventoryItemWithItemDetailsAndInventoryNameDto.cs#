@@ -1,0 +1,12 @@
+
+namespace InventoryManagementSystem.Application.Dtos{
+
+        public class InventoryItemWithItemDetailsAndInventoryNameDto
+    {
+        public int ItemId { get; set; }
+        public string? ItemName { get; set; }
+        public string? ItemCode { get; set; }
+        public string? ItemSize { get; set; }
+        public string? InventoryName { get; set; }
+    }
+}

@@ -1,0 +1,13 @@
+
+namespace InventoryManagementSystem.Application.Dtos{
+
+    public class InventoryItemWithExpiredItemDetailsDto
+    {
+        public int InventoryId { get; set; }
+        public int ItemId { get; set; }
+        public string ItemName { get; set; }=String.Empty;
+        public string ItemSize { get; set; }=String.Empty;
+        public int? Quantity { get; set; }
+        public DateTime? ExpiryDate { get; set; }
+    }
+}

@@ -1,0 +1,33 @@
+using AutoMapper;
+using MediatR;
+using InventoryManagementSystem.Application.Dtos;
+using InventoryManagementSystem.Domain.Interfaces;
+
+namespace InventoryManagementSystem.Application.InventoryItems.Queries
+{
+public class GetAllInventoryItemsByInventoryIdQueryHandler : IRequestHandler<GetAllInventoryItemsByInventoryIdQuery, List<InventoryItemWithItemDetailsDto>>
+{
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
+    
+
+    public GetAllInventoryItemsByInventoryIdQueryHandler(IUnitOfWork unitOfWork,IMapper mapper)
+        {
+            
+        _unitOfWork = unitOfWork;
+           _mapper = mapper;
+           }
+
+    public async Task<List<InventoryItemWithItemDetailsDto>> Handle(GetAllInventoryItemsByInventoryIdQuery request, CancellationToken cancellationToken)
+    {
+            var InventoryItems=await _unitOfWork.InventoryItemRepository.GetAllByInventoryIdAsync(request.InventoryId,cancellationToken);
+          return InventoryItems.Select(ii=> new InventoryItemWithItemDetailsDto
+          {
+            ItemId = (int)ii.GetType().GetProperty("ItemId")!.GetValue(ii)!,
+            ItemName = (string)ii.GetType().GetProperty("ItemName")!.GetValue(ii)!,
+            ItemSize = (string)ii.GetType().GetProperty("ItemSize")!.GetValue(ii)!,
+            Quantity = (int?)ii.GetType().GetProperty("Quantity")!.GetValue(ii)!
+          }).ToList();
+    }
+}
+}

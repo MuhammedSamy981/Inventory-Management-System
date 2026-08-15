@@ -1,0 +1,39 @@
+using AutoMapper;
+using MediatR;
+using InventoryManagementSystem.Application.Dtos;
+using InventoryManagementSystem.Domain.Interfaces;
+
+namespace InventoryManagementSystem.Application.InventoryItems.Queries
+{
+public class GetInventoryItemSpecificQueryHandler : IRequestHandler<GetInventoryItemSpecificQuery, InventoryItemWithInventoryDetailsDto?>
+{
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
+    
+
+    public GetInventoryItemSpecificQueryHandler(IUnitOfWork unitOfWork,IMapper mapper)
+        {
+            
+        _unitOfWork = unitOfWork;
+           _mapper = mapper;
+           }
+
+    public async Task<InventoryItemWithInventoryDetailsDto?> Handle(GetInventoryItemSpecificQuery request, CancellationToken cancellationToken)
+    {
+        var inventoryItem =await _unitOfWork.InventoryItemRepository.GetSpecificAsync(request.InventoryId,request.ItemId);
+        if (inventoryItem != null)
+        {
+             return new InventoryItemWithInventoryDetailsDto
+             {
+                                InventoryId = (int)inventoryItem.GetType().GetProperty("InventoryId")!.GetValue(inventoryItem)!,
+                Quantity = (int?)inventoryItem.GetType().GetProperty("Quantity")!.GetValue(inventoryItem)!,
+                InventoryName = (string)inventoryItem.GetType().GetProperty("InventoryName")!.GetValue(inventoryItem)!,
+                InventoryAddress = (string)inventoryItem.GetType().GetProperty("InventoryAddress")!.GetValue(inventoryItem)!,
+                ItemId = (int)inventoryItem.GetType().GetProperty("ItemId")!.GetValue(inventoryItem)!,
+             };
+        }
+             
+        return null;
+    }
+}
+}

@@ -1,0 +1,13 @@
+namespace InventoryManagementSystem.Application.Dtos
+{
+
+        public class OperationWithMovedItemDetailsDto
+    {
+        public int ItemId { get; set; }
+        public string? ItemName { get; set; }
+        public string? MoveName { get; set; }
+        public DateTime? MoveDate { get; set; }
+        public int? Quantity { get; set; }
+    }
+
+}

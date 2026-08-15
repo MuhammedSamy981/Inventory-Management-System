@@ -1,0 +1,34 @@
+using AutoMapper;
+using MediatR;
+using InventoryManagementSystem.Application.Dtos;
+using InventoryManagementSystem.Domain.Interfaces;
+
+namespace InventoryManagementSystem.Application.InventoryItems.Queries
+{
+public class GetAllInventoryItemsByListInventoryIdsQueryHandler : IRequestHandler<GetAllInventoryItemsByListInventoryIdsQuery, List<InventoryItemWithItemDetailsAndInventoryNameDto>>
+{
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
+    
+
+    public GetAllInventoryItemsByListInventoryIdsQueryHandler(IUnitOfWork unitOfWork,IMapper mapper)
+        {
+            
+        _unitOfWork = unitOfWork;
+           _mapper = mapper;
+           }
+
+    public async Task<List<InventoryItemWithItemDetailsAndInventoryNameDto>> Handle(GetAllInventoryItemsByListInventoryIdsQuery request, CancellationToken cancellationToken)
+    {
+ var inventoryItems=await _unitOfWork.InventoryItemRepository.GetAllByListInventoryIdsAsync(request.InventoryIds, cancellationToken);
+        return inventoryItems.Select(ii=> new InventoryItemWithItemDetailsAndInventoryNameDto
+        {
+            ItemId = (int)ii.GetType().GetProperty("ItemId")!.GetValue(ii)!,
+            ItemName = (string)ii.GetType().GetProperty("ItemName")!.GetValue(ii)!,
+            ItemCode= (string)ii.GetType().GetProperty("ItemCode")!.GetValue(ii)!,
+            ItemSize = (string)ii.GetType().GetProperty("ItemSize")!.GetValue(ii)!,
+            InventoryName = (string)ii.GetType().GetProperty("InventoryName")!.GetValue(ii)!
+        }).ToList();
+    }
+}
+}

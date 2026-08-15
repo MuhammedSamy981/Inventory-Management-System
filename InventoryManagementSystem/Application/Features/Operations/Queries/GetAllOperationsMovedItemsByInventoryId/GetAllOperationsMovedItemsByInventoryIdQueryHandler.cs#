@@ -1,0 +1,34 @@
+using AutoMapper;
+using MediatR;
+using InventoryManagementSystem.Application.Dtos;
+using InventoryManagementSystem.Domain.Interfaces;
+
+namespace InventoryManagementSystem.Application.Operations.Queries
+{
+public class GetAllOperationsMovedItemsByInventoryIdQueryHandler : IRequestHandler<GetAllOperationsMovedItemsByInventoryIdQuery, List<OperationWithMovedItemDetailsDto>>
+{
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
+    
+
+    public GetAllOperationsMovedItemsByInventoryIdQueryHandler(IUnitOfWork unitOfWork,IMapper mapper)
+        {
+            
+        _unitOfWork = unitOfWork;
+           _mapper = mapper;
+           }
+
+    public async Task<List<OperationWithMovedItemDetailsDto>> Handle(GetAllOperationsMovedItemsByInventoryIdQuery request, CancellationToken cancellationToken)
+    {
+            var operations=await _unitOfWork.OperationRepository.GetAllMovedItemsByInventoryIdAsync(request.InventoryId,request.FromDate,request.ToDate,cancellationToken);
+          return operations.Select(o=> new OperationWithMovedItemDetailsDto
+          {
+            ItemId = (int)o.GetType().GetProperty("ItemId")!.GetValue(o)!,
+            ItemName = (string)o.GetType().GetProperty("ItemName")!.GetValue(o)!,
+            MoveName = (string)o.GetType().GetProperty("MoveName")!.GetValue(o)!,
+            MoveDate = (DateTime?)o.GetType().GetProperty("MoveDate")!.GetValue(o)!,
+            Quantity = (int?)o.GetType().GetProperty("Quantity")!.GetValue(o)!
+          }).ToList();
+    }
+}
+}
