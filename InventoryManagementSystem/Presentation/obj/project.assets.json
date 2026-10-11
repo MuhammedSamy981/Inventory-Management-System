@@ -4824,11 +4824,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\InventoryManagementSystem\\Presentation\\Presentation.csproj",
+      "projectUniqueName": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\to git\\InventoryManagementSystem\\Presentation\\Presentation.csproj",
       "projectName": "Presentation",
-      "projectPath": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\InventoryManagementSystem\\Presentation\\Presentation.csproj",
+      "projectPath": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\to git\\InventoryManagementSystem\\Presentation\\Presentation.csproj",
       "packagesPath": "C:\\Users\\Muhammad\\.nuget\\packages\\",
-      "outputPath": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\InventoryManagementSystem\\Presentation\\obj\\",
+      "outputPath": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\to git\\InventoryManagementSystem\\Presentation\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Muhammad\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -4843,14 +4843,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "E:\\New folder (3)\\Full Stack Web Development\\My projects\\InventoryManagementSystem\\Application\\Application.csproj": {
-              "projectPath": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\InventoryManagementSystem\\Application\\Application.csproj"
+            "E:\\New folder (3)\\Full Stack Web Development\\My projects\\to git\\InventoryManagementSystem\\Application\\Application.csproj": {
+              "projectPath": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\to git\\InventoryManagementSystem\\Application\\Application.csproj"
             },
-            "E:\\New folder (3)\\Full Stack Web Development\\My projects\\InventoryManagementSystem\\Domain\\Domain.csproj": {
-              "projectPath": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\InventoryManagementSystem\\Domain\\Domain.csproj"
+            "E:\\New folder (3)\\Full Stack Web Development\\My projects\\to git\\InventoryManagementSystem\\Domain\\Domain.csproj": {
+              "projectPath": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\to git\\InventoryManagementSystem\\Domain\\Domain.csproj"
             },
-            "E:\\New folder (3)\\Full Stack Web Development\\My projects\\InventoryManagementSystem\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\InventoryManagementSystem\\Infrastructure\\Infrastructure.csproj"
+            "E:\\New folder (3)\\Full Stack Web Development\\My projects\\to git\\InventoryManagementSystem\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\to git\\InventoryManagementSystem\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }

@@ -4,8 +4,8 @@ namespace InventoryManagementSystem.Domain.Interfaces
     where TEntity : class
     {
         Task<List<TEntity>> GetAllAsync(CancellationToken cancellationToken = default);
-        Task<TEntity?> GetByIdAsync(int? id);
-        Task<TEntity?> GetByIdAsync(string? id);
+        Task<TEntity?> GetByIdAsync(int? id, CancellationToken cancellationToken = default);
+        Task<TEntity?> GetByIdAsync(string? id, CancellationToken cancellationToken = default);
         Task AddAsync(TEntity entity);
         Task AddRangeAsync(List<TEntity> entities);
         Task UpdateAsync(TEntity entity);

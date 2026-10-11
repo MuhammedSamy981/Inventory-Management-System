@@ -37,6 +37,11 @@ namespace InventoryManagementSystem.Application.People.Commands
              && (p.UpdatePersonCommand.Type == "Inventory Manager" || p.UpdatePersonCommand.Type == "Supplier" || p.UpdatePersonCommand.Type == "Client")).Equal(true)
             .WithMessage("Type must be 'Inventory Manager', 'Supplier', or 'Client'");
 
+             RuleFor(p => p.UpdatePersonCommand.Website)
+            .Must(website => website.Contains("."))
+            .When(p => !string.IsNullOrEmpty(p.UpdatePersonCommand.Website))
+            .WithMessage("Website is not valid");
+
             RuleFor(p => p.ApplicationUserId).NotEmpty().WithMessage("ApplicationUserId is required");
 
         }

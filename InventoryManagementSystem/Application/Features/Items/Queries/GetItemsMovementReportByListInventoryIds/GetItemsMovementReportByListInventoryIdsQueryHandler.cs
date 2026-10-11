@@ -19,7 +19,7 @@ namespace InventoryManagementSystem.Application.Items.Queries
         public async Task<List<ItemsMovementReportDto>> Handle(GetItemsMovementReportByListInventoryIdsQuery request, CancellationToken cancellationToken)
         {
 
-            var items = await _unitOfWork.InventoryRepository.GetAllItemsMovementByListInventoryIdsAsync(request.InventoryIds!,request.ApplicationUserId, request.FromDate, request.ToDate);
+            var items = await _unitOfWork.InventoryRepository.GetAllItemsMovementByListInventoryIdsAsync(request.InventoryIds!,request.ApplicationUserId, request.FromDate, request.ToDate,cancellationToken);
             if (items != null)
             {
 

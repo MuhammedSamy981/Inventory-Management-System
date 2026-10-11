@@ -20,7 +20,7 @@ namespace InventoryManagementSystem.Application.People.Queries
 
         public async Task<PersonDto?> Handle(GetPersonByIdQuery request, CancellationToken cancellationToken)
         {
-            var person = await _unitOfWork.PersonRepository.GetByIdAsync(request.Id);
+            var person = await _unitOfWork.PersonRepository.GetByIdAsync(request.Id,cancellationToken);
             if (person != null && person.ApplicationUserId == request.ApplicationUserId)
             {
                 return _mapper.Map<PersonDto>(person);

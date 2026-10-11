@@ -27,14 +27,16 @@ namespace InventoryManagementSystem.Application.Operations.Commands
                 {
                     var inventoryItemTo = await _unitOfWork.InventoryItemRepository.GetSpecificAsync(request.CreateTransferOperationCommand.ToInventoryId, request.CreateTransferOperationCommand.ItemId);
                     var operation = _mapper.Map<Operation>(request);
+                    var ManagerId = await _unitOfWork.InventoryRepository.GetManagerIdByInventoryIdAsync(request.CreateTransferOperationCommand.FromInventoryId, request.ApplicationUserId, cancellationToken);
+                    if (ManagerId != 0)
+                    {
+                    operation.PersonId =ManagerId; 
                     await _unitOfWork.OperationRepository.AddAsync(operation);
                     if (inventoryItemTo != null)
                     {
                         inventoryItemFrom.Quantity -= request.CreateTransferOperationCommand.Quantity;
 
                         inventoryItemTo.Quantity += request.CreateTransferOperationCommand.Quantity;
-
-
                     }
                     else
                     {
@@ -48,6 +50,7 @@ namespace InventoryManagementSystem.Application.Operations.Commands
                         };
                         await _unitOfWork.InventoryItemRepository.AddAsync(newInventoryItemTo);
 
+                    }
                     }
 
                     if (await _unitOfWork.SaveChangesAsync() != 0)

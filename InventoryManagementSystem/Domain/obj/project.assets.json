@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\InventoryManagementSystem\\Domain\\Domain.csproj",
+      "projectUniqueName": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\to git\\InventoryManagementSystem\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\InventoryManagementSystem\\Domain\\Domain.csproj",
+      "projectPath": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\to git\\InventoryManagementSystem\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\Muhammad\\.nuget\\packages\\",
-      "outputPath": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\InventoryManagementSystem\\Domain\\obj\\",
+      "outputPath": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\to git\\InventoryManagementSystem\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Muhammad\\AppData\\Roaming\\NuGet\\NuGet.Config"

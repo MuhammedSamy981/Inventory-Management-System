@@ -65,8 +65,8 @@ namespace InventoryManagementSystem.Application.Mappings
             .IncludeMembers(src => src.CreateTransferOperationCommand)
             .ForMember(des=>des.Date, opt => opt.MapFrom(src => DateTime.Now))
             .ForMember(des=>des.Type, opt => opt.MapFrom(src => "Transfer from InventoryId=" + src.CreateTransferOperationCommand.FromInventoryId))
-            .ForMember(des=>des.InventoryId, opt => opt.MapFrom(src => src.CreateTransferOperationCommand.ToInventoryId))
-            .ForMember(des=>des.PersonId, opt => opt.MapFrom(src => src.CreateTransferOperationCommand.SupplierId)).ReverseMap();
+            .ForMember(des=>des.InventoryId, opt => opt.MapFrom(src => src.CreateTransferOperationCommand.ToInventoryId)).ReverseMap();
+            //.ForMember(des=>des.PersonId, opt => opt.MapFrom(src => src.CreateTransferOperationCommand.SupplierId)).ReverseMap();
             #endregion
 
 

@@ -42,7 +42,7 @@ namespace InventoryManagementSystem.Presentation.WebApi.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<ActionResult<OperationDto>> GetById(int id)
+        public async Task<ActionResult<OperationDto>> GetById(int id, CancellationToken cancellationToken = default)
         {
                 var userContext = HttpContext.User;
 
@@ -52,7 +52,7 @@ namespace InventoryManagementSystem.Presentation.WebApi.Controllers
         }
         var applicationUserId = userContext.FindFirst(JwtRegisteredClaimNames.Jti)?.Value!;
             var query = new GetOperationByIdQuery(id,applicationUserId);
-            var operation = await _mediator.Send(query);
+            var operation = await _mediator.Send(query,cancellationToken);
             return operation != null ? Ok(operation) : NotFound();
         }
 
@@ -107,7 +107,7 @@ namespace InventoryManagementSystem.Presentation.WebApi.Controllers
 
         [HttpGet]
         [Route("type/{type}")]
-        public async Task<ActionResult<OperationDto>> GetAllByType(string type, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<List<OperationDto>>> GetAllByType(string type, int pageNumber = 1, int pageSize = 10,CancellationToken cancellationToken = default)
         {
                          var userContext = HttpContext.User;
 
@@ -116,7 +116,7 @@ namespace InventoryManagementSystem.Presentation.WebApi.Controllers
             return Unauthorized();
         }
         var applicationUserId = userContext.FindFirst(JwtRegisteredClaimNames.Jti)?.Value!;
-            var query = new GetAllOperationsByTypeQuery(type, applicationUserId);
+            var query = new GetAllOperationsByTypeQuery(type, applicationUserId, pageNumber, pageSize);
             var operations = await _mediator.Send(query, cancellationToken);
             return Ok(operations);
         }

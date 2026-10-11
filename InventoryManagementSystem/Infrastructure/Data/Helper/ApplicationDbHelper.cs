@@ -82,7 +82,7 @@ namespace InventoryManagementSystem.Infrastructure.Data
                     Phone = "01012345678",
                     Email = "ahmed.hassan@store.com",
                     Website = "www.store1.com",
-                    Type = "StoreManager",
+                    Type = "Inventory Manager",
                     ApplicationUserId = users[0].Id
                 },
                 new Person
@@ -94,7 +94,7 @@ namespace InventoryManagementSystem.Infrastructure.Data
                     Phone = "01012345679",
                     Email = "sara.mohamed@store.com",
                     Website = "www.store2.com",
-                    Type = "StoreManager",
+                    Type = "Inventory Manager",
                     ApplicationUserId = users[0].Id
                 },
                 // Clients
@@ -167,7 +167,7 @@ namespace InventoryManagementSystem.Infrastructure.Data
                     Telephone = "0245678912",
                     Fax = null,
                     Phone = "01234567890",
-                    Email = "omar.hassan@email.com",
+                    Email = "khaled.mostafa@email.com",
                     Website = "https://mostafa-supplies.example.com",
                     Type = "Supplier",
                     ApplicationUserId = users[0].Id
@@ -348,7 +348,7 @@ namespace InventoryManagementSystem.Infrastructure.Data
                 ProDate = new DateTime(2026, 1, 10),
                 ExpiryDate = new DateTime(2027, 1, 10),
                 ItemId = 1,
-                PersonId = 5, // Hassan Supply Co (Supplier)
+                PersonId = 8, // Khaled Mostafa (Supplier)
                 InventoryId = 1, // Main Warehouse
                 ApplicationUserId = users[0].Id
             });
@@ -363,7 +363,7 @@ namespace InventoryManagementSystem.Infrastructure.Data
                 ProDate = new DateTime(2026, 1, 15),
                 ExpiryDate = new DateTime(2027, 7, 15),
                 ItemId = 2,
-                PersonId = 6, // Golden Trading (Supplier)
+                PersonId = 7, // Golden Trading (Supplier)
                 InventoryId = 1,// Main Warehouse
                 ApplicationUserId = users[0].Id
             });
@@ -378,7 +378,7 @@ namespace InventoryManagementSystem.Infrastructure.Data
                 ProDate = new DateTime(2026, 1, 25),
                 ExpiryDate = new DateTime(2027, 1, 25),
                 ItemId = 3,
-                PersonId = 5, // Hassan Supply Co (Supplier)
+                PersonId = 6, // Hassan Supply Co (Supplier)
                 InventoryId = 1, // Main Warehouse
                 ApplicationUserId = users[0].Id
             });
@@ -393,7 +393,7 @@ namespace InventoryManagementSystem.Infrastructure.Data
                 ProDate = new DateTime(2026, 2, 5),
                 ExpiryDate = new DateTime(2028, 2, 5),
                 ItemId = 4,
-                PersonId = 6, // Golden Trading (Supplier)
+                PersonId = 8, // Khaled Mostafa (Supplier)
                 InventoryId = 1, // Main Warehouse
                 ApplicationUserId = users[0].Id
             });
@@ -408,7 +408,7 @@ namespace InventoryManagementSystem.Infrastructure.Data
                 ProDate = new DateTime(2026, 2, 10),
                 ExpiryDate = new DateTime(2027, 2, 10),
                 ItemId = 5,
-                PersonId = 5, // Hassan Supply Co (Supplier)
+                PersonId = 6, // Hassan Supply Co (Supplier)
                 InventoryId = 2,// Branch Store
                 ApplicationUserId = users[0].Id
             });

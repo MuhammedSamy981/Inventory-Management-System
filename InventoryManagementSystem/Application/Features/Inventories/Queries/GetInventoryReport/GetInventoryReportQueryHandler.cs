@@ -19,7 +19,7 @@ namespace InventoryManagementSystem.Application.Inventories.Queries
 
         public async Task<InventoryReportDto?> Handle(GetInventoryReportQuery request, CancellationToken cancellationToken)
         {
-            var inventory = await _unitOfWork.InventoryRepository.GetAllDetailsByIdAsync(request.Id, request.ApplicationUserId, request.FromDate, request.ToDate);
+            var inventory = await _unitOfWork.InventoryRepository.GetAllDetailsByIdAsync(request.Id, request.ApplicationUserId, request.FromDate, request.ToDate,cancellationToken);
             if (inventory != null)
             {
                 var items = inventory.GetType().GetProperty("Items")!.GetValue(inventory) as IEnumerable<Object>;
@@ -58,6 +58,7 @@ namespace InventoryManagementSystem.Application.Inventories.Queries
                             Id = (int)i.GetType().GetProperty("ItemId")!.GetValue(i)!,
                             Name = (string)i.GetType().GetProperty("ItemName")!.GetValue(i)!,
                             Size = (string)i.GetType().GetProperty("ItemSize")!.GetValue(i)!,
+                            Code=(string)i.GetType().GetProperty("ItemCode")!.GetValue(i)!,
                             Quantity = ItemQuantity[index]
                         }).ToList()
                     };
@@ -74,6 +75,7 @@ namespace InventoryManagementSystem.Application.Inventories.Queries
                         Id = (int)i.GetType().GetProperty("ItemId")!.GetValue(i)!,
                         Name = (string)i.GetType().GetProperty("ItemName")!.GetValue(i)!,
                         Size = (string)i.GetType().GetProperty("ItemSize")!.GetValue(i)!,
+                        Code=(string)i.GetType().GetProperty("ItemCode")!.GetValue(i)!,
                         Quantity = (int?)i.GetType().GetProperty("Quantity")!.GetValue(i)!
                     }).ToList()
                 };

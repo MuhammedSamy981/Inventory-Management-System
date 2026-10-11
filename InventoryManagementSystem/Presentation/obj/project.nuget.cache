@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0ZU6V8m6Jk0P0BmEd2qLQGCV2ps5G+AhP8o6T70XnO6K4skhlDsPlgHBM61e5DXNdUFtbZgYmrFj7ij5Gy/sgg==",
+  "dgSpecHash": "oNtN/IG4nsH9VY5pOC20zCN+V8WHAS0WiDKKIwHiUxoujF17GYKkXHKaKmnBiASAxDszLKDF0mYp+nZ7A43uVw==",
   "success": true,
-  "projectFilePath": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\InventoryManagementSystem\\Presentation\\Presentation.csproj",
+  "projectFilePath": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\to git\\InventoryManagementSystem\\Presentation\\Presentation.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Muhammad\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Muhammad\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",

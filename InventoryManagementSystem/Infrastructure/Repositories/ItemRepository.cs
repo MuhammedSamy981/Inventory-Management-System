@@ -21,7 +21,7 @@ namespace InventoryManagementSystem.Infrastructure.Repositories
         .Take(pageSize).ToListAsync(cancellationToken);
         }
 
-        public async Task<Object?> GetAllDetailsByIdAndListInventoryIdsAsync(int id, List<int> inventoryIds,string applicationUserId, DateTime? fromDate, DateTime? toDate)
+        public async Task<Object?> GetAllDetailsByIdAndListInventoryIdsAsync(int id, List<int> inventoryIds,string applicationUserId, DateTime? fromDate, DateTime? toDate, CancellationToken cancellationToken = default)
         {
            //Console.WriteLine($"/n /n /n Item fromDate={fromDate}, toDate={toDate} /n /n /n");
             return await _context.Set<Item>().AsNoTracking()
@@ -45,7 +45,7 @@ namespace InventoryManagementSystem.Infrastructure.Repositories
                                 InventoryAddress = ii.Inventory.Address,
                                 Quantity = ii.Quantity
                             }).ToList<Object>()
-                }).FirstOrDefaultAsync();
+                }).FirstOrDefaultAsync(cancellationToken:cancellationToken);
         }
 
         public async Task<bool> ExistsAsync(int? id, CancellationToken cancellationToken = default)

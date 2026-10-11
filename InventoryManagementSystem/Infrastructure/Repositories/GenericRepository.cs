@@ -26,13 +26,13 @@ namespace InventoryManagementSystem.Infrastructure.Repositories
             return await _context.Set<TEntity>().AsNoTracking().Skip((pageNumber - 1) * pageSize)
             .Take(pageSize).ToListAsync(ct);
         }
-        public async Task<TEntity?> GetByIdAsync(int? id)
+        public async Task<TEntity?> GetByIdAsync(int? id, CancellationToken cancellationToken = default)
         {
-            return await _context.Set<TEntity>().FindAsync(id);
+            return await _context.Set<TEntity>().FindAsync(id,cancellationToken);
         }
-        public async Task<TEntity?> GetByIdAsync(string? id)
+        public async Task<TEntity?> GetByIdAsync(string? id, CancellationToken cancellationToken = default)
         {
-            return await _context.Set<TEntity>().FindAsync(id);
+            return await _context.Set<TEntity>().FindAsync(id,cancellationToken);
         }
 
         public async Task AddAsync(TEntity entity)

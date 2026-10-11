@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/k1I6VvK3mT1HaxuU23Pi2YxE4CGgWHbgUSr+QB3YOWrd2NTWRPHEESvkksNSPkc7rpms0Zq7jDOhMx7MuEJLg==",
+  "dgSpecHash": "rbcM3rrwblPxB+sceTs6ymf8jg0HZ5flVoUfRFYAfnPCNq1fbHqY7U3t0tN8lezzzdaAp/UGuDQEaeub4rX5yw==",
   "success": true,
-  "projectFilePath": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\InventoryManagementSystem\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "E:\\New folder (3)\\Full Stack Web Development\\My projects\\to git\\InventoryManagementSystem\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Muhammad\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Muhammad\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",

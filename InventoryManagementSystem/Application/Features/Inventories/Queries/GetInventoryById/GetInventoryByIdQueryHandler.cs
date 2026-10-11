@@ -19,7 +19,7 @@ public class GetInventoryByIdQueryHandler : IRequestHandler<GetInventoryByIdQuer
 
     public async Task<InventoryDto?> Handle(GetInventoryByIdQuery request, CancellationToken cancellationToken)
     {
-        var inventory =await _unitOfWork.InventoryRepository.GetByIdAsync(request.Id);
+        var inventory =await _unitOfWork.InventoryRepository.GetByIdAsync(request.Id,cancellationToken);
         if (inventory != null && request.ApplicationUserId==inventory.ApplicationUserId)
         {
             return _mapper.Map<InventoryDto>(inventory);

@@ -8,8 +8,7 @@ namespace InventoryManagementSystem.Application.Operations.Commands
     int FromInventoryId,
     int ToInventoryId,
     int ItemId,
-    int Quantity,
-    int SupplierId
+    int Quantity//,int SupplierId
     );
     public record CreateTransferOperationCommandWithApplicationUserId(
     CreateTransferOperationCommand CreateTransferOperationCommand,

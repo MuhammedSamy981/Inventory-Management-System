@@ -1,4 +1,4 @@
-# Inventory Management System
+# Inventory Management System API
 
 A RESTful Inventory Management System API built with **ASP.NET Core 8 Web API**, following a layered architecture with **Domain, Application, Infrastructure, and Presentation** projects.
 
@@ -668,12 +668,92 @@ Apply migrations:
 dotnet ef database update --project Infrastructure --startup-project Presentation
 ```
 
-## License
 
-This project does not currently specify a license. Add a `LICENSE` file if you intend to distribute the project publicly.
 
-## Author
 
-**Muhammad Samy Saber**
+# StockBase — Inventory Management Frontend
 
-.NET Developer | ASP.NET Core | C# | SQL Server
+A React web application for your **InventoryManagementSystem** ASP.NET Core API. Built with React + Vite, React Router, and Axios.
+
+## What's included
+
+- **Login / Register** — landing page is the login form; new users can register from there. Handles the API's email-verification and forgot/reset-password flows (in Development mode your API returns the verification/reset token directly instead of emailing it — the UI surfaces that token for you to submit).
+- **People** — table of people with Edit/Delete per row, "Add person" button, type restricted to `Inventory Manager`, `Supplier`, `Client`.
+- **Inventories** — table with Edit/Delete, "Add inventory" button, plus an inventory report section with an optional date-range filter.
+- **Items** — table with Edit/Delete, "Add item" button, plus four report sections:
+  - Item report across one or more inventories (optional date range)
+  - Items stored in one inventory over a period
+  - Items expired in one inventory over a period
+  - Items movement report across one or more inventories (optional date range)
+- **Operations** — table with Edit/Delete, "Add operation" button, type restricted to `Supply Permit`, `Exchange Permit`.
+- **Transfers** — table with **no** edit/delete (transfers are immutable), only an "Add transfer" button. Since your API stores transfers as `Operation` rows (tagged `Transfer from InventoryId=X`), this page fetches all operations and filters for those automatically.
+
+JWT access/refresh tokens are stored in `localStorage` and refreshed automatically on 401 responses via `/api/Users/refresh-token`.
+
+## Requirements
+
+Before running the project, install:
+
+- [Node.js](https://nodejs.org/en/download)
+
+## 1. Run your Web API
+
+Open the `InventoryManagementSystem` solution and run it (e.g. `dotnet run --launch-profile https` from the `Presentation` project), or start it from Visual Studio. Note the URL it starts on — with the profiles in your project that's:
+
+- HTTPS: `https://localhost:7261`
+- HTTP: `http://localhost:5145`
+
+## 2. Configure the frontend
+
+In this project's root, open `.env`:
+
+```
+VITE_API_URL=https://localhost:7261/api
+```
+
+Update the port if your API runs elsewhere. If you see SSL errors in the browser console, trust the local dev certificate once:
+
+```bash
+dotnet dev-certs https --trust
+```
+
+Your API's CORS policy already allows any origin (`AllowAnyOrigin`), so no backend changes are needed for local development.
+
+## 3. Install and run the frontend
+
+```bash
+npm install
+npm run dev
+```
+
+This starts the app at `http://localhost:5173`. Open it, register an account, verify it (the code is pre-filled in dev mode), then sign in.
+
+## Project structure
+
+```
+src/
+  api/            Axios calls per resource (auth, people, inventories, items, operations)
+  components/      Shared UI: Layout/sidebar, Modal, DataTable, Button, form fields, toasts
+  context/         AuthContext (JWT/session) and ToastContext (notifications)
+  pages/
+    auth/          Login, Register
+    People.jsx
+    Inventories.jsx
+    Items.jsx
+    Operations.jsx
+    Transfers.jsx
+```
+
+## Building for production
+
+```bash
+npm run build
+```
+
+Outputs a static build to `dist/`, which you can deploy to any static host — just make sure `VITE_API_URL` (baked in at build time) points to your production API URL, and that your production API's CORS policy allows your deployed frontend's origin.
+
+## Notes on how a few endpoints map to the UI
+
+- **Person / Inventory / Item / Operation IDs** are supplied by the client (your API rejects IDs that already exist), so the "Add" forms pre-fill a random ID that you can edit before saving.
+- **Stored / Expired item reports** call `GET /api/Items/storage/{inventoryId}/{days}/{months}/{years}` and `.../expired/...` — these express "period" as a lookback window from today, matching your API's signature, rather than an explicit date range.
+- **Transfers** use `POST /api/Operations/transfer` with `FromInventoryId`, `ToInventoryId`, `ItemId`, `Quantity`, `SupplierId`.

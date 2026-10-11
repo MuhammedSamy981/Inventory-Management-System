@@ -13,3 +13,19 @@ E:\New folder (3)\Full Stack Web Development\My projects\InventoryManagementSyst
 E:\New folder (3)\Full Stack Web Development\My projects\InventoryManagementSystem\Application\obj\Debug\net8.0\refint\Application.dll
 E:\New folder (3)\Full Stack Web Development\My projects\InventoryManagementSystem\Application\obj\Debug\net8.0\Application.pdb
 E:\New folder (3)\Full Stack Web Development\My projects\InventoryManagementSystem\Application\obj\Debug\net8.0\ref\Application.dll
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Application\bin\Debug\net8.0\Application.deps.json
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Application\bin\Debug\net8.0\Application.dll
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Application\bin\Debug\net8.0\Application.pdb
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Application\bin\Debug\net8.0\Domain.dll
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Application\bin\Debug\net8.0\Domain.pdb
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Application\obj\Debug\net8.0\Application.csproj.AssemblyReference.cache
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Application\obj\Debug\net8.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Application\obj\Debug\net8.0\Application.AssemblyInfoInputs.cache
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Application\obj\Debug\net8.0\Application.AssemblyInfo.cs
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Application\obj\Debug\net8.0\Application.csproj.CoreCompileInputs.cache
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Application\obj\Debug\net8.0\Application.sourcelink.json
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Application\obj\Debug\net8.0\Application.csproj.CopyComplete
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Application\obj\Debug\net8.0\Application.dll
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Application\obj\Debug\net8.0\refint\Application.dll
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Application\obj\Debug\net8.0\Application.pdb
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Application\obj\Debug\net8.0\ref\Application.dll

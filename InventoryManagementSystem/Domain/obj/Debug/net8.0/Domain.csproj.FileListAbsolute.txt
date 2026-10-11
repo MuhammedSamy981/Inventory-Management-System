@@ -9,3 +9,15 @@ E:\New folder (3)\Full Stack Web Development\My projects\InventoryManagementSyst
 E:\New folder (3)\Full Stack Web Development\My projects\InventoryManagementSystem\Domain\obj\Debug\net8.0\refint\Domain.dll
 E:\New folder (3)\Full Stack Web Development\My projects\InventoryManagementSystem\Domain\obj\Debug\net8.0\Domain.pdb
 E:\New folder (3)\Full Stack Web Development\My projects\InventoryManagementSystem\Domain\obj\Debug\net8.0\ref\Domain.dll
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Domain\bin\Debug\net8.0\Domain.deps.json
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Domain\bin\Debug\net8.0\Domain.dll
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Domain\bin\Debug\net8.0\Domain.pdb
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Domain\obj\Debug\net8.0\Domain.dll
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Domain\obj\Debug\net8.0\refint\Domain.dll
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Domain\obj\Debug\net8.0\Domain.pdb
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Domain\obj\Debug\net8.0\ref\Domain.dll

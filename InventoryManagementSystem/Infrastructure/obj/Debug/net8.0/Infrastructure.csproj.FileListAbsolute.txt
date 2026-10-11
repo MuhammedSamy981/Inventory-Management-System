@@ -15,3 +15,21 @@ E:\New folder (3)\Full Stack Web Development\My projects\InventoryManagementSyst
 E:\New folder (3)\Full Stack Web Development\My projects\InventoryManagementSystem\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
 E:\New folder (3)\Full Stack Web Development\My projects\InventoryManagementSystem\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 E:\New folder (3)\Full Stack Web Development\My projects\InventoryManagementSystem\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Infrastructure\bin\Debug\net8.0\Infrastructure.dll
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Infrastructure\bin\Debug\net8.0\Infrastructure.pdb
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Infrastructure\bin\Debug\net8.0\Application.dll
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Infrastructure\bin\Debug\net8.0\Domain.dll
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Infrastructure\bin\Debug\net8.0\Domain.pdb
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Infrastructure\bin\Debug\net8.0\Application.pdb
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.AssemblyReference.cache
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Infrastructure\obj\Debug\net8.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfoInputs.cache
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfo.cs
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.CoreCompileInputs.cache
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.CopyComplete
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Infrastructure\obj\Debug\net8.0\Infrastructure.dll
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
+E:\New folder (3)\Full Stack Web Development\My projects\to git\InventoryManagementSystem\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll

@@ -37,7 +37,11 @@ namespace InventoryManagementSystem.Application.People.Commands
                 .WithMessage("Type must be 'Inventory Manager', 'Supplier', or 'Client'");
 
 
-            RuleFor(p => !string.IsNullOrEmpty(p.CreatePersonCommand.Website) && p.CreatePersonCommand.Website.Contains(".")).Equal(true).WithMessage("Website is not valid");
+            RuleFor(p => p.CreatePersonCommand.Website)
+            .Must(website => website.Contains("."))
+            .When(p => !string.IsNullOrEmpty(p.CreatePersonCommand.Website))
+            .WithMessage("Website is not valid");
+
 
             RuleFor(p => p.ApplicationUserId).NotEmpty().WithMessage("ApplicationUserId is required");
 

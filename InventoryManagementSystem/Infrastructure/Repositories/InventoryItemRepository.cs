@@ -96,11 +96,11 @@ namespace InventoryManagementSystem.Infrastructure.Repositories
         }
 
 
-        public async Task<InventoryItem?> GetSpecificAsync(int inventoryId, int itemId)
+        public async Task<InventoryItem?> GetSpecificAsync(int inventoryId, int itemId, CancellationToken cancellationToken = default)
         {
             return await _context.Set<InventoryItem>()
             .FirstOrDefaultAsync(i => i.InventoryId == inventoryId &&
-            i.ItemId == itemId);
+            i.ItemId == itemId,cancellationToken);
         }
 
         public async Task<bool> ExistsAsync(int? inventoryId, int? itemId, CancellationToken cancellationToken = default)

@@ -16,7 +16,7 @@ namespace InventoryManagementSystem.Infrastructure.Repositories
 
 
 
-        public async Task<Object?> GetAllDetailsByIdAsync(int id, string applicationUserId, DateTime? fromDate, DateTime? toDate)
+        public async Task<Object?> GetAllDetailsByIdAsync(int id, string applicationUserId, DateTime? fromDate, DateTime? toDate, CancellationToken cancellationToken = default)
         {
             return await _context.Set<Inventory>().AsNoTracking()
             .Where(i => i.ApplicationUserId == applicationUserId && i.Id == id)
@@ -36,9 +36,10 @@ namespace InventoryManagementSystem.Infrastructure.Repositories
                                 ItemId = ii.ItemId,
                                 ItemName = ii.Item!.Name,
                                 ItemSize = ii.Item!.Size,
+                                ItemCode = ii.Item!.Code,
                                 Quantity = ii.Quantity
                             }).ToList<Object>()
-                }).FirstOrDefaultAsync();
+                }).FirstOrDefaultAsync(cancellationToken:cancellationToken);
         }
         public async Task<List<Object>> GetAllItemsMovementByListInventoryIdsAsync(List<int> inventoryIds, string applicationUserId, DateTime? fromDate, DateTime? toDate, CancellationToken cancellationToken = default)
         {
@@ -85,6 +86,14 @@ namespace InventoryManagementSystem.Infrastructure.Repositories
         {
             return await _context.Set<Inventory>().Where(i => i.ApplicationUserId == applicationUserId)
                 .Select(i => i.Id).ToListAsync(cancellationToken);
+        }
+
+        public async Task<int> GetManagerIdByInventoryIdAsync(int id, string applicationUserId, CancellationToken cancellationToken = default)
+        {
+            var inventory = await _context.Set<Inventory>()
+            .FirstOrDefaultAsync(i => i.Id == id && i.ApplicationUserId == applicationUserId, cancellationToken);
+
+            return inventory?.ManagerId ?? 0;
         }
     }
 }

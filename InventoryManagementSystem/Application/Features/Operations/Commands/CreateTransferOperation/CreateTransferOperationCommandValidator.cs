@@ -27,7 +27,7 @@ namespace InventoryManagementSystem.Application.Operations.Commands
 
             RuleFor(o => o.CreateTransferOperationCommand.Quantity)
                         .GreaterThan(0).WithMessage("Quantity must be greater than 0");
-            RuleFor(o => o.CreateTransferOperationCommand.SupplierId).NotEmpty().WithMessage("Supplier Id is required");
+            //RuleFor(o => o.CreateTransferOperationCommand.SupplierId).NotEmpty().WithMessage("Supplier Id is required");
 
             RuleFor(o => o.ApplicationUserId).NotEmpty().WithMessage("ApplicationUserId is required");
 

@@ -20,7 +20,7 @@ public class GetItemByIdQueryHandler : IRequestHandler<GetItemByIdQuery, ItemDto
 
     public async Task<ItemDto?> Handle(GetItemByIdQuery request, CancellationToken cancellationToken)
     {
-        var item =await _unitOfWork.ItemRepository.GetByIdAsync(request.Id);
+        var item =await _unitOfWork.ItemRepository.GetByIdAsync(request.Id,cancellationToken);
         if (item != null && item.ApplicationUserId==request.ApplicationUserId)
         {
              return _mapper.Map<ItemDto>(item);

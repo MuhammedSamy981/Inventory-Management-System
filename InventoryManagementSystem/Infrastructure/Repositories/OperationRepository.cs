@@ -41,15 +41,16 @@ namespace InventoryManagementSystem.Infrastructure.Repositories
 
         public async Task<List<Operation>> GetAllByApplicationUserIdAsync(string applicationUserId, int pageNumber, int pageSize, CancellationToken cancellationToken = default)
         {
-            return await _context.Set<Operation>().AsNoTracking().Where(i => i.ApplicationUserId == applicationUserId).Skip((pageNumber - 1) * pageSize)
+            return await _context.Set<Operation>().AsNoTracking().Where(o => o.ApplicationUserId == applicationUserId && !o.Type!.Contains("Transfer")).Skip((pageNumber - 1) * pageSize)
             .Take(pageSize).ToListAsync(cancellationToken);
         }
 
-        public async Task<List<Operation>> GetAllByTypeAsync(string type, string applicationUserId, CancellationToken cancellationToken = default)
+        public async Task<List<Operation>> GetAllByTypeAsync(string type, string applicationUserId,int pageNumber, int pageSize, CancellationToken cancellationToken = default)
         {
-            return await _context.Set<Operation>()//.Include(p=>p.Category)
-           .Where(o => o.Type == type && o.ApplicationUserId == applicationUserId)
-           .OrderByDescending(o => o.Id).AsNoTracking().ToListAsync(cancellationToken);
+            return await _context.Set<Operation>().AsNoTracking()
+           .Where(o => o.Type!.Contains(type) && o.ApplicationUserId == applicationUserId)
+           .OrderByDescending(o => o.Id).Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize).ToListAsync(cancellationToken);
         }
 
 
@@ -138,7 +139,7 @@ namespace InventoryManagementSystem.Infrastructure.Repositories
         {
             return await _context.Set<Operation>()
             .Where(o => o.InventoryId == inventoryId && o.ItemId == itemId && o.Type == "Supply Permit" && o.ApplicationUserId == applicationUserId)
-            .Select(o => o.PersonId).ToListAsync();
+            .Select(o => o.PersonId).ToListAsync(cancellationToken);
         }
 
         public async Task<bool> ExistsAsync(int? id, CancellationToken cancellationToken = default)

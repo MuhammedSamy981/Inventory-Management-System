@@ -19,7 +19,7 @@ namespace InventoryManagementSystem.Application.Operations.Queries
 
         public async Task<OperationDto?> Handle(GetOperationByIdQuery request, CancellationToken cancellationToken)
         {
-            var operation = await _unitOfWork.OperationRepository.GetByIdAsync(request.Id);
+            var operation = await _unitOfWork.OperationRepository.GetByIdAsync(request.Id,cancellationToken);
             if (operation != null && operation.ApplicationUserId == request.ApplicationUserId)
             {
                 return _mapper.Map<OperationDto>(operation);

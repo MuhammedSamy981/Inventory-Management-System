@@ -20,7 +20,7 @@ public class GetItemReportQueryHandler : IRequestHandler<GetItemReportQuery, Ite
 
     public async Task<ItemReportDto?> Handle(GetItemReportQuery request, CancellationToken cancellationToken)
     {
-        var item =await _unitOfWork.ItemRepository.GetAllDetailsByIdAndListInventoryIdsAsync(request.Id,request.InventoryIds,request.ApplicationUserId,request.FromDate,request.ToDate);
+        var item =await _unitOfWork.ItemRepository.GetAllDetailsByIdAndListInventoryIdsAsync(request.Id,request.InventoryIds,request.ApplicationUserId,request.FromDate,request.ToDate,cancellationToken);
         if (item != null)
         {
             var inventoriesWithItemQuantities = item.GetType().GetProperty("Inventories")!.GetValue(item) as IEnumerable<Object>;

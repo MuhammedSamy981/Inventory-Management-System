@@ -42,7 +42,7 @@ namespace InventoryManagementSystem.Presentation.WebApi.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<ActionResult<ItemDto>> GetById(int id)
+        public async Task<ActionResult<ItemDto>> GetById(int id, CancellationToken cancellationToken = default)
         {
             var userContext = HttpContext.User;
 
@@ -52,7 +52,7 @@ namespace InventoryManagementSystem.Presentation.WebApi.Controllers
             }
             var applicationUserId = userContext.FindFirst(JwtRegisteredClaimNames.Jti)?.Value!;
             var query = new GetItemByIdQuery(id, applicationUserId);
-            var item = await _mediator.Send(query);
+            var item = await _mediator.Send(query,cancellationToken);
             return item != null ? Ok(item) : NotFound();
         }
 

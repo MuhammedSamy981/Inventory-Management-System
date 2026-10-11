@@ -19,7 +19,7 @@ public class GetAllOperationsByTypeQueryHandler : IRequestHandler<GetAllOperatio
 
     public async Task<List<OperationDto>> Handle(GetAllOperationsByTypeQuery request, CancellationToken cancellationToken)
     {
-       var operations=await _unitOfWork.OperationRepository.GetAllByTypeAsync(request.Type,request.ApplicationUserId,cancellationToken);
+       var operations=await _unitOfWork.OperationRepository.GetAllByTypeAsync(request.Type,request.ApplicationUserId,request.PageNumber, request.PageSize,cancellationToken);
        return _mapper.Map<List<OperationDto>>(operations);
     }
 }

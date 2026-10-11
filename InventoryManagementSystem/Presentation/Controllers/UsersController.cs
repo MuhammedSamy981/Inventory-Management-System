@@ -53,8 +53,6 @@ public class UsersController : ControllerBase
         var user = await _userManager.FindByIdAsync(userId!);
         if (user == null) return NotFound();
 
-        var roles = await _userManager.GetRolesAsync(user);
-
         return Ok(new UserDto
         {
             Id = user.Id,
