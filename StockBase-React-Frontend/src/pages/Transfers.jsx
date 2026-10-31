@@ -31,7 +31,6 @@ export default function Transfers() {
   const toast = useToast();
   const [operations, setOperations] = useState([]);
   const [items, setItems] = useState([]);
- // const [people, setPeople] = useState([]);
   const [inventories, setInventories] = useState([]);
   const [loading, setLoading] = useState(true);
 
